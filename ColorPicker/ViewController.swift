@@ -42,7 +42,10 @@ extension ViewController : ColorPickerViewDelegate {
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Revenir", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
-            self.view.backgroundColor = lastColor
+            UIView.animate(withDuration: 2, animations: {
+                self.view.backgroundColor = lastColor
+            }, completion: nil)
+            
         }))
         self.present(alert, animated: true, completion: nil)
     }
