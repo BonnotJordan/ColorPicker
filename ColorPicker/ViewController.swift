@@ -32,7 +32,19 @@ class ViewController: UIViewController {
 
 extension ViewController : ColorPickerViewDelegate {
     func userDidChooseColor(color: UIColor) {
-        dismiss(animated: false, completion: nil)
+        let lastColor = view.backgroundColor
+        view.backgroundColor = color
+        dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: "ColorPicker", message: "Voulez-vous garder cette nouvelle couleur ou revenir à l'ancienne", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Garder", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Revenir", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            self.view.backgroundColor = lastColor
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

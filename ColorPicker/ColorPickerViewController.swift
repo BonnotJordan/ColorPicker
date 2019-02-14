@@ -16,7 +16,18 @@ class ColorPickerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func greenButton(_ sender: Any) {
+        self.delegate?.userDidChooseColor(color: UIColor(named: ColorAsset.green.rawValue)!)
+    }
+    
+    @IBAction func orangeButton(_ sender: Any) {
+        self.delegate?.userDidChooseColor(color: UIColor(named: ColorAsset.orange.rawValue)!)
+    }
+    
+    @IBAction func purpleButton(_ sender: Any) {
+        self.delegate?.userDidChooseColor(color: UIColor(named: ColorAsset.purple.rawValue)!)
+    }
     
 
     /*
