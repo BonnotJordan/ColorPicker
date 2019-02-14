@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    
     @IBOutlet weak var button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "pickColor"){
             let delegateVC = segue.destination as! ColorPickerViewController
-            delegateVC.delegate = self
+            delegateVC.completionHandler = userDidChooseColor
     
         }
     }
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController : ColorPickerViewDelegate {
+extension ViewController {
     func userDidChooseColor(color: UIColor) {
         let lastColor = self.view.backgroundColor
         view.backgroundColor = color
